@@ -10,13 +10,17 @@
       <p><span v-if="loading">Loading...</span></p>
     </form>
     
-    <div v-if="profiles.length > 0">
+    <div v-if="linkedin.length > 0">
       <h3>Results:</h3>
       <div v-for="profile in profiles" :key="profile.ProfileLink" class="profile">
         <p>Twitter account: </p> 
         <img :src="profile.ProfileImg" alt="Profile Image" />
         <a :href="profile.ProfileLink" target="_blank">{{ profile.ProfileLink }}</a>
-
+      </div>
+      <div v-for="profile in linkedin" :key="profile.ProfileLink" class="profile">
+        <p>Linkedin account: <strong> {{ profile.ProfileName }}</strong> </p> 
+        <img :src="profile.ProfileImg" alt="Profile Image" />
+        <a :href="profile.ProfileLink" target="_blank">{{ profile.ProfileLink }}</a>
       </div>
     </div>
     
@@ -37,13 +41,21 @@ export default {
       profiles: [],
       searched: false,
       loading: false,
+      linkedin:[]
     };
   },
   methods: {
     async searchProfile() {
       try {
         this.loading = true;
-        const response = await axios.post('http://localhost:3000/findProfile', {
+        // const response = await axios.post('http://localhost:3000/findProfile', {
+        //   profileName: this.profileName
+        // }, {
+        //   headers: {
+        //     Authorization: `Bearer ${localStorage.getItem('token')}`
+        //   }
+        // });
+        const linkedin_response = await axios.post('http://localhost:5000/findProfile', {
           profileName: this.profileName
         }, {
           headers: {
@@ -51,11 +63,15 @@ export default {
           }
         });
 
-        this.profiles = response.data.results;
+        // this.profiles = response.data.results;
+        this.linkedin = linkedin_response.data.profiles;
+        console.log(this.linkedin)
         this.searched = true;
       } catch (error) {
         console.error('Error searching profile:', error);
         this.profiles = [];
+        this.linkedin = [];
+
         this.searched = true;
       }finally {
         this.loading = false;
