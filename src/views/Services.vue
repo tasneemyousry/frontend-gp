@@ -11,8 +11,13 @@
         </router-link>
       </div>
       <div class="search-facebook">
-        <button class="search-facebook-display">Facebook Search</button>
-      </div>
+        <router-link to="/searchFacebook" custom v-slot="{ navigate }">
+          <button class="search-facebook-display" @click="navigate">
+            Facebook Search
+            <img src="D:\gp\frontend\VUE_FRONT\VUE_FRONT\src\assets\img\facebook.png">
+          </button>
+        </router-link>
+      </div>
       <div class="search-profile">
         <router-link to="/searchProfile" custom v-slot="{ navigate }">
           <button class="search-profile-display" @click="navigate">
@@ -28,6 +33,7 @@
           </button>
         </router-link>
       </div>
+      
     </div>
   </div>
 </template>

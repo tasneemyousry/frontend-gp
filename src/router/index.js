@@ -9,11 +9,13 @@ import Profile from '../views/Profile.vue';
 import History from '../views/History.vue';
 import SearchProfile from '../views/SearchProfile.vue';
 import SearchLinkedin from '../views/SearchLinkedin.vue';
+import SearchFacebook from '../views/SearchFacebook.vue';
 
 const routes = [
   { path: '/', name: 'Services', component: Services },
   { path: '/searchTwitter', name: 'SearchTwitter', component: SearchTwitter },
   { path: '/searchLinkedin', name: 'SearchLinkedin', component: SearchLinkedin },
+  { path: '/searchFacebook', name: 'SearchFacebook', component: SearchFacebook },
   { path: '/About', name: 'About', component:About},
   { path: '/Login', name: 'Login', component:Login},
   { path: '/Signup', name: 'Signup', component:Signup},

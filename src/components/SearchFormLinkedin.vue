@@ -85,6 +85,7 @@
   </div> 
   <!-- --------------------PROFILE---------------------------------------->
   <div class="mt-3" v-if="profile">
+    <p style="color:#00674f;font-size:xx-large">RESULTS</p>
         <label v-if="Object.keys(profile).length!=0" style="font-size: x-large;" ><strong>Profile Info:</strong></label>
         <div  class="table-responsive">
           <div v-if="filters.name && profile.name ">
@@ -110,7 +111,7 @@
         </div>
       </div>
   <!-- --------------------POSTS----------------------------------->
-  <div class="mt-3" v-if="filters.posts && posts ">
+  <div class="mt-3" v-if="filters.posts && posts.length > 0 ">
         <label v-if="posts.length!=0" style="font-size: x-large;" ><strong>Posts:</strong></label>
         <div  class="table-responsive">
           <table class="table table-bordered">

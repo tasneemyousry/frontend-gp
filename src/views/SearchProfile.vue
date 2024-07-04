@@ -48,13 +48,13 @@ export default {
     async searchProfile() {
       try {
         this.loading = true;
-        // const response = await axios.post('http://localhost:3000/findProfile', {
-        //   profileName: this.profileName
-        // }, {
-        //   headers: {
-        //     Authorization: `Bearer ${localStorage.getItem('token')}`
-        //   }
-        // });
+        const response = await axios.post('http://localhost:3000/findProfile', {
+          profileName: this.profileName
+        }, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        });
         const linkedin_response = await axios.post('http://localhost:5000/findProfile', {
           profileName: this.profileName
         }, {
@@ -63,7 +63,7 @@ export default {
           }
         });
 
-        // this.profiles = response.data.results;
+        this.profiles = response.data.results;
         this.linkedin = linkedin_response.data.profiles;
         console.log(this.linkedin)
         this.searched = true;
